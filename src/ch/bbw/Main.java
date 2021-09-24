@@ -6,12 +6,17 @@ public class Main {
         int[] data = {432, 2342, 1234, 234, 42, 432, 234};
         int[] bubblesorted = bubblesort(data.clone()); // force pass-by-value
         int[] selectionsorted = selectionsort(data.clone());
+        int[] insertionsorted = insertionsort(data.clone());
 
         for(int i: bubblesorted){
             System.out.print(i + " ");
         }
         System.out.println();
         for(int i: selectionsorted){
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        for(int i: insertionsorted){
             System.out.print(i + " ");
         }
     }
@@ -42,6 +47,20 @@ public class Main {
             data[i] = data[smallest_index];
             data[smallest_index] = temp;
 
+        }
+
+        return data;
+    }
+    private static int[] insertionsort(int[] data){
+        int temp;
+        for(int i = 1; i < data.length; i++){
+            for(int j = 0; j < i; j++){
+                if(data[i-j] < data[i-j-1]){
+                    temp = data[i-j-1];
+                    data[i-j-1] = data[i-j];
+                    data[i-j] = temp;
+                }
+            }
         }
 
         return data;
